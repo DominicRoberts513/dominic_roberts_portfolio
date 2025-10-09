@@ -345,19 +345,19 @@ main .portfolio .sonore {
   width: 100%;
   display: flex;
 }
-main .portfolio .sonore .playBtn1, main .portfolio .sonore .playBtn2 {
+main .portfolio .sonore .playBtn1, main .portfolio .sonore .playBtn2, main .portfolio .sonore .playBtn3 {
   width: 50vw;
   display: block;
   overflow: hidden;
 }
-main .portfolio .sonore .playBtn1 img, main .portfolio .sonore .playBtn2 img {
+main .portfolio .sonore .playBtn1 img, main .portfolio .sonore .playBtn2 img, main .portfolio .sonore .playBtn3 img {
   width: 100%;
 }
-main .portfolio .sonore .stopBtn1, main .portfolio .sonore .stopBtn2 {
+main .portfolio .sonore .stopBtn1, main .portfolio .sonore .stopBtn2, main .portfolio .sonore .stopBtn3 {
   width: 50vw;
   display: none;
 }
-main .portfolio .sonore .stopBtn1 img, main .portfolio .sonore .stopBtn2 img {
+main .portfolio .sonore .stopBtn1 img, main .portfolio .sonore .stopBtn2 img, main .portfolio .sonore .stopBtn3 img {
   width: 100%;
 }
 main .contact {

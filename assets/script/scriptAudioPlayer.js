@@ -1,11 +1,9 @@
 // sonore
 
+// // micro montage btn1
 let playBtn1 = document.querySelector('.playBtn1')
 let stopBtn1 = document.querySelector('.stopBtn1')
-let playBtn2 = document.querySelector('.playBtn2')
-let stopBtn2 = document.querySelector('.stopBtn2')
 let montage = document.querySelector('.montage_audio')
-let tempsReel = document.querySelector('.tempsreel_audio')
 
 playBtn1.addEventListener("click", () => {
   montage.play()
@@ -25,6 +23,11 @@ if (montage.currentTime == montage.duration) {
   playBtn1.style.display = "block"
 }
 
+// // dada sonore btn2
+let playBtn2 = document.querySelector('.playBtn2')
+let stopBtn2 = document.querySelector('.stopBtn2')
+let tempsReel = document.querySelector('.tempsreel_audio')
+
 playBtn2.addEventListener("click", () => {
   tempsReel.play()
   playBtn2.style.display = "none"
@@ -41,4 +44,27 @@ if (tempsReel.currentTime == tempsReel.duration) {
   tempsReel.pause()
   stopBtn2.style.display = "none"
   playBtn2.style.display = "block"
+}
+
+// // spg 1 btn3
+let playBtn3 = document.querySelector('.playBtn3')
+let stopBtn3 = document.querySelector('.stopBtn3')
+let prSpg1 = document.querySelector('.pr_spg_01_audio')
+
+playBtn3.addEventListener("click", () => {
+  prSpg1.play()
+  playBtn3.style.display = "none"
+  stopBtn3.style.display = "block"
+})
+stopBtn3.addEventListener("click", () => {
+  prSpg1.pause()
+  stopBtn3.style.display = "none"
+  playBtn3.style.display = "block"
+})
+
+if (prSpg1.currentTime == prSpg1.duration) {
+  prSpg1.currentTime = 0
+  prSpg1.pause()
+  stopBtn3.style.display = "none"
+  playBtn3.style.display = "block"
 }
