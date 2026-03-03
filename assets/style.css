@@ -283,6 +283,7 @@ main .content .dernierProjet .dernierProjet--projet .embedVid iframe {
 }
 main .content .dernierProjet .dernierProjet--projet .description {
   width: 80%;
+  margin-bottom: 5%;
 }
 main .content .dernierProjet .dernierProjet--projet .description a {
   color: var(--blanc);
@@ -338,6 +339,21 @@ main .portfolio .autoportrait .content {
   margin-bottom: 0px;
 }
 main .portfolio .autoportrait .content img {
+  width: 100%;
+  border-radius: 20px;
+}
+main .portfolio .specto {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+main .portfolio .specto .content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  margin-bottom: 0px;
+}
+main .portfolio .specto .content img {
   width: 100%;
   border-radius: 20px;
 }
@@ -471,6 +487,9 @@ footer .content a:hover {
     text-align: left;
   }
   main .content .portfolio .autoportrait .content {
+    grid-template-columns: 1fr;
+  }
+  main .content .portfolio .specto .content {
     grid-template-columns: 1fr;
   }
 }

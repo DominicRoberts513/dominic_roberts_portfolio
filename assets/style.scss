@@ -1,3 +1,4 @@
+// palette de couleur
 :root {
     --deepNoir: #000;
     --noir: #1f1c1c;
@@ -7,19 +8,20 @@
     --violet: #4d4a5a;
 }
 
+// ma font
 @font-face {
     src: url("typo/UbuntuMono-Regular.woff2") format("woff2");
     font-family: "Ubuntu";
 }
 
+// ce qui s'applique sur tout
 * {
     box-sizing: border-box;
     font-family: Ubuntu, Bahnschrift;
     //font-size: 1.5vw;
 }
 
-
-
+// corp du site
 body {
     width: 100%;
     margin: 0px;
@@ -28,6 +30,7 @@ body {
     font-size: 1.5vw;
 }
 
+// HEADER
 header {
     display: block;
     position: fixed;
@@ -44,6 +47,8 @@ header {
         height: 100%;
         display: flex;
     }
+
+    // menu ici
     .menu {
         display: block;
         //position: absolute;
@@ -250,6 +255,7 @@ header {
     }
 }
 
+// main ici
 main {
     display: block;
     position: relative;
@@ -322,6 +328,7 @@ main {
                 }
                 .description {
                     width: 80%;
+                    margin-bottom: 5%;
                     a {
                         color: var(--blanc);
                     }
@@ -371,6 +378,22 @@ main {
         }
         
         .autoportrait {
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            .content {
+                display: grid;
+                grid-template-columns:  1fr;
+                gap: 5px;
+                margin-bottom: 0px;
+                img {
+                    width: 100%;
+                    border-radius: 20px;
+                }
+            }
+        }
+
+        .specto {
             width: 100%;
             display: flex;
             flex-flow: column;
@@ -558,6 +581,12 @@ footer {
                     text-align: left;
                 }
                 .autoportrait {
+                    .content {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                .specto {
                     .content {
                         grid-template-columns: 1fr;
                     }
