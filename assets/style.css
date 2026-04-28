@@ -16,12 +16,69 @@
   font-family: Ubuntu, Bahnschrift;
 }
 
+html,
 body {
   width: 100%;
-  margin: 0px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
   background-color: var(--noir);
   min-height: 100vh;
   font-size: 1.5vw;
+}
+
+body .interface {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+body .interface .interface_projet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blanc);
+  padding: 1.5rem;
+  min-height: 0;
+  min-width: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+body .interface .interface_projet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+body .interface .interface_projet .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+body .interface .interface_projet span {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+
+main {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 header {
@@ -102,26 +159,6 @@ header .nom:hover {
 }
 header .menuHamburger {
   display: none;
-  /*
-  * Just a quick hamburger
-  */
-  /* 
-  * Transform all the slices of hamburger
-  * into a crossmark.
-  */
-  /*
-  * But let's hide the middle one.
-  */
-  /*
-  * Ohyeah and the last one should go the other direction
-  */
-  /*
-  * Make this absolute positioned
-  * at the top left of the screen
-  */
-  /*
-  * And let's slide it in from the left
-  */
 }
 header .menuHamburger .menuToggle {
   display: block;
@@ -153,6 +190,11 @@ header .menuHamburger .menuToggle input {
   z-index: 2; /* and place it over the hamburger */
   -webkit-touch-callout: none;
 }
+header .menuHamburger {
+  /*
+  * Just a quick hamburger
+  */
+}
 header .menuHamburger .menuToggle span {
   display: block;
   width: 33px;
@@ -171,20 +213,42 @@ header .menuHamburger .menuToggle span:first-child {
 header .menuHamburger .menuToggle span:nth-last-child(2) {
   transform-origin: 0% 100%;
 }
+header .menuHamburger {
+  /* 
+  * Transform all the slices of hamburger
+  * into a crossmark.
+  */
+}
 header .menuHamburger .menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
   background: var(--blanc);
 }
+header .menuHamburger {
+  /*
+  * But let's hide the middle one.
+  */
+}
 header .menuHamburger .menuToggle input:checked ~ span:nth-last-child(3) {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
+}
+header .menuHamburger {
+  /*
+  * Ohyeah and the last one should go the other direction
+  */
 }
 header .menuHamburger .menuToggle input:checked ~ span:nth-last-child(2) {
   transform: rotate(-45deg) translate(0, -1px);
 }
 header .menuHamburger .menuToggle input:checked ~ .menuUl {
   box-shadow: 0px 1px 20px var(--deepNoir);
+}
+header .menuHamburger {
+  /*
+  * Make this absolute positioned
+  * at the top left of the screen
+  */
 }
 header .menuHamburger .menuUl {
   position: absolute;
@@ -204,213 +268,245 @@ header .menuHamburger .menuUl li {
   padding: 10px 0;
   font-size: 22px;
 }
+header .menuHamburger {
+  /*
+  * And let's slide it in from the left
+  */
+}
 header .menuHamburger .menuToggle input:checked ~ ul {
   transform: none;
 }
 
+/*
 main {
-  display: block;
-  position: relative;
-  top: 9vw;
-  z-index: 1;
-}
-main .content {
-  width: 100%;
-  color: var(--blanc);
-  background-color: var(--noir);
-  display: flex;
-  flex-flow: column;
-}
-main .content h2 {
-  font-size: 3vw;
-}
-main .content .moi {
-  display: block;
-  overflow: hidden;
-}
-main .content .moi .degrade {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(rgba(31, 28, 28, 0.5), rgb(31, 28, 28));
-  z-index: 0;
-}
-main .content .moi .a_propos {
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  background-image: url("img/dominic.jpg");
-  background-repeat: no-repeat;
-  background-position: center-25%;
-  background-size: 100%;
-  padding: 3% 5%;
-  z-index: 5;
-}
-main .content .dernierProjet {
-  padding: 5% 5%;
-}
-main .content .dernierProjet h3 {
-  text-transform: uppercase;
-  font-size: xx-large;
-}
-main .content .dernierProjet .dernierProjetTitreFlexContainer {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  text-align: right;
-}
-main .content .dernierProjet .dernierProjet--projet {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  justify-content: center;
-  /* opacity: 100%; */
-  margin-bottom: 5%;
-}
-main .content .dernierProjet .dernierProjet--projet h3 {
-  font-size: 3vw;
-}
-main .content .dernierProjet .dernierProjet--projet .embedVid {
-  width: 80%;
-  aspect-ratio: 16/9;
-  margin: 0px;
-}
-main .content .dernierProjet .dernierProjet--projet .embedVid iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-main .content .dernierProjet .dernierProjet--projet .description {
-  width: 80%;
-  margin-bottom: 5%;
-}
-main .content .dernierProjet .dernierProjet--projet .description a {
-  color: var(--blanc);
-}
-main .content .dernierProjet .dernierProjet--projet .description a:hover {
-  color: var(--violet);
-}
-main .portfolio {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 3% 5%;
-}
-main .portfolio div {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  justify-content: center;
-  /* opacity: 100%; */
-  margin: 5% 0;
-}
-main .portfolio div .embedVid {
-  width: 80%;
-  aspect-ratio: 16/9;
-  margin: 0px;
-}
-main .portfolio div .embedVid iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-main .portfolio div .description {
-  width: 80%;
-}
-main .portfolio div .description a {
-  color: var(--blanc);
-}
-main .portfolio div .description a:hover {
-  color: var(--violet);
-}
-main .portfolio .autoportrait {
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-}
-main .portfolio .autoportrait .content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 5px;
-  margin-bottom: 0px;
-}
-main .portfolio .autoportrait .content img {
-  width: 100%;
-  border-radius: 20px;
-}
-main .portfolio .specto {
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-}
-main .portfolio .specto .content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 5px;
-  margin-bottom: 0px;
-}
-main .portfolio .specto .content img {
-  width: 100%;
-  border-radius: 20px;
-}
-main .portfolio .sonore {
-  width: 100%;
-  display: flex;
-}
-main .portfolio .sonore .playBtn1, main .portfolio .sonore .playBtn2 {
-  width: 50vw;
-  display: block;
-  overflow: hidden;
-}
-main .portfolio .sonore .playBtn1 img, main .portfolio .sonore .playBtn2 img {
-  width: 100%;
-}
-main .portfolio .sonore .stopBtn1, main .portfolio .sonore .stopBtn2 {
-  width: 50vw;
-  display: none;
-}
-main .portfolio .sonore .stopBtn1 img, main .portfolio .sonore .stopBtn2 img {
-  width: 100%;
-}
-main .contact {
-  padding: 5% 5%;
-  color: var(--blanc);
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 10;
-}
-main .contact .titre {
-  margin: 0px;
-}
-main .contact .information {
-  width: 50%;
-  padding: 2% 2% 5% 2%;
-  color: var(--blanc);
-}
-main .contact .information a {
-  color: var(--blanc);
-}
-main .contact .information a:hover {
-  color: var(--violet);
-}
-main .contact .container {
-  display: flex;
-  height: 100%;
-  width: 50%;
-}
-main .contact .container form {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  padding: 2% 2% 5% 2%;
-}
+    display: block;
+    position: relative;
+    top: 9vw;
+    z-index: 1;
+    .content {
+        h2 {
+            font-size: 3vw;
+        }
+        width: 100%;
+        color: var(--blanc);
+        background-color: var(--noir);
+        display: flex;
+        flex-flow: column;
+        .moi {
+            display: block;
+            overflow: hidden;
+            .degrade {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(rgba(31, 28, 28, 0.5), rgba(31, 28, 28, 1));
+                z-index: 0;
+            }
+            .a_propos {
+                width: 100%;
+                display: flex;
+                flex-flow: column;
+                background-image: url("img/dominic.jpg");
+                background-repeat: no-repeat;
+                background-position: center - 25%;
+                background-size: 100%;
+                padding: 3% 5%; 
+                z-index: 5;
+            }
+        }
+        .dernierProjet {
+            h3 {
+                text-transform: uppercase;
+                font-size: xx-large;
+            }
+            padding: 5% 5%;
+            .dernierProjetTitreFlexContainer {
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                text-align: right;
+            }
+            .dernierProjet--projet {
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                justify-content: center;
+                /* opacity: 100%; */ /*
+            margin-bottom: 5%;
+            h3 {
+                font-size: 3vw;
+            }
 
+            .embedVid {
+                width: 80%;
+                aspect-ratio: 16/9;
+                margin: 0px;
+                iframe {
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                }
+            }
+            .description {
+                width: 80%;
+                margin-bottom: 5%;
+                a {
+                    color: var(--blanc);
+                }
+                a:hover {
+                    color: var(--violet);
+                }
+            }
+        }
+    }
+}
+.portfolio {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3% 5%;
+
+    div {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        justify-content: center;
+        /* opacity: 100%; */ /*
+            margin: 5% 0;
+
+            .embedVid {
+                width: 80%;
+                aspect-ratio: 16/9;
+                margin: 0px;
+                iframe {
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                }
+            }
+            .description {
+                width: 80%;
+                a {
+                    color: var(--blanc);
+                }
+                a:hover {
+                    color: var(--violet);
+                }
+            }
+        }
+
+        .autoportrait {
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            .content {
+                display: grid;
+                grid-template-columns:  1fr;
+                gap: 5px;
+                margin-bottom: 0px;
+                img {
+                    width: 100%;
+                    border-radius: 20px;
+                }
+            }
+        }
+
+        .specto {
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            .content {
+                display: grid;
+                grid-template-columns:  1fr;
+                gap: 5px;
+                margin-bottom: 0px;
+                img {
+                    width: 100%;
+                    border-radius: 20px;
+                }
+            }
+        }
+
+        .sonore {
+            width: 100%;
+            display: flex;
+            // .sonore {
+            //     width: 100%;
+            //     display: flex;
+            //     .playBtn {
+            //         display: block;
+            //     }
+            //     .stopBtn {
+            //         display: none;
+            //     }
+            // }
+
+
+
+            .playBtn1, .playBtn2 {
+                width: 50vw;
+                display: block;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                }
+            }
+            .stopBtn1, .stopBtn2 {
+                width: 50vw;
+                display: none;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+
+    .contact {
+        padding: 5% 5%;
+        color: var(--blanc);
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 10;
+        .titre {
+            margin: 0px;
+            //font-size: 3vw;
+        }
+        .information {
+            width: 50%;
+            padding: 2% 2% 5% 2%;
+            color: var(--blanc);
+            a {
+                color: var(--blanc);
+            }
+            a:hover {
+                color: var(--violet);
+            }
+        }
+
+        .container {
+            display: flex;
+
+            height: 100%;
+            width: 50%;
+
+            form {
+                display: flex;
+                flex-flow: column;
+                justify-content: space-between;
+                padding: 2% 2% 5% 2%;
+            }
+        }
+    }
+
+}
+*/
 h2 {
   text-transform: uppercase;
 }
@@ -446,6 +542,9 @@ footer .content a:hover {
   body {
     font-size: 4vw;
   }
+  header .accueilLink {
+    display: none;
+  }
   header {
     display: block;
     position: fixed;
@@ -455,9 +554,6 @@ footer .content a:hover {
     z-index: 2;
     height: 10vw;
     box-shadow: none;
-  }
-  header .accueilLink {
-    display: none;
   }
   header .menuHamburger {
     display: block;
@@ -494,6 +590,9 @@ footer .content a:hover {
   }
 }
 @media screen and (max-width: 500px) {
+  header .accueilLink {
+    display: none;
+  }
   header {
     display: block;
     position: fixed;
@@ -503,9 +602,6 @@ footer .content a:hover {
     z-index: 2;
     height: 20vw;
     box-shadow: none;
-  }
-  header .accueilLink {
-    display: none;
   }
   header .menuHamburger {
     display: block;

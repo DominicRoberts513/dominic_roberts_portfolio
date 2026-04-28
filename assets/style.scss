@@ -24,10 +24,31 @@
 // corp du site
 body {
     width: 100%;
+    height: 100%;
     margin: 0px;
+    padding: 0px;
     background-color: var(--noir);
     min-height: 100vh;
     font-size: 1.5vw;
+    
+    .interface {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: auto auto;
+
+        .interface_projet {
+            width: 25%;
+            height: 50%;
+        }
+    }
+}
+
+main {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 // HEADER
@@ -256,6 +277,7 @@ header {
 }
 
 // main ici
+/*
 main {
     display: block;
     position: relative;
@@ -311,7 +333,7 @@ main {
                 text-align: center;
                 width: 100%;
                 justify-content: center;
-                /* opacity: 100%; */
+                /* opacity: 100%; */ /*
                 margin-bottom: 5%;
                 h3 {
                     font-size: 3vw;
@@ -354,7 +376,7 @@ main {
             text-align: center;
             width: 100%;
             justify-content: center;
-            /* opacity: 100%; */
+            /* opacity: 100%; */ /*
             margin: 5% 0;
             
             .embedVid {
@@ -484,6 +506,7 @@ main {
     }
     
 }
+*/
 
 
 
