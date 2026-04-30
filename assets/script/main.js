@@ -12,6 +12,44 @@ let menuHamburger = document.querySelector('.menuHamburger')
 let accueilLink = document.querySelector('.accueilLink')
 let contactContainer = document.querySelector('.container')
 
+// Project page header shrink on scroll
+const projectHeader = document.querySelector('header');
+if (projectHeader) {
+  const initialHeight = 15; // vh
+  const minHeight = 10; // vh
+  const shrinkFactor = 0.05; // adjust for shrink speed
+
+  const main = document.querySelector('main');
+  if (main) {
+    main.style.paddingTop = initialHeight + 'vh';
+  }
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const newHeight = Math.max(minHeight, initialHeight - scrollY * shrinkFactor);
+    projectHeader.style.height = newHeight + 'vh';
+    if (main) {
+      main.style.paddingTop = newHeight + 'vh';
+    }
+  });
+}
+
+// Project page dropdown
+const dropdownButtonProject = document.querySelector(".dropBtnProjet");
+const dropdownContentProject = document.querySelector(".dropContent");
+if (dropdownButtonProject && dropdownContentProject) {
+  dropdownButtonProject.addEventListener("click", () => {
+    dropdownContentProject.style.display = dropdownContentProject.style.display === "block" ? "none" : "block";
+  });
+
+  // Close dropdown when clicking outside
+  window.addEventListener("click", (event) => {
+    if (!event.target.matches('.dropBtnProjet')) {
+      dropdownContentProject.style.display = "none";
+    }
+  });
+}
+
 window.addEventListener("load", () => {
     if (windowWidth > 1000) {
         windowOver1000()

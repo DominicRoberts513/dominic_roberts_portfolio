@@ -46,11 +46,10 @@ body .interface .interface_projet {
   padding: 1.5rem;
   min-height: 0;
   min-width: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   position: relative;
+  text-decoration: none;
 }
+
 
 body .interface .interface_projet::after {
   content: "";
@@ -59,11 +58,44 @@ body .interface .interface_projet::after {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%);
 }
 
+body .interface .interface_projet .static-bg,
+body .interface .interface_projet .gif-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.3s ease;
+}
+
+body .interface .interface_projet .static-bg {
+  opacity: 1;
+  z-index: -2;
+}
+
+body .interface .interface_projet .gif-bg {
+  opacity: 0;
+  z-index: -2;
+}
+
 body .interface .interface_projet .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+body .interface .interface_projet:hover .static-bg {
+  opacity: 0;
+}
+
+body .interface .interface_projet:hover .gif-bg {
+  opacity: 1;
+}
+
+body .interface .interface_projet:hover .overlay {
+  opacity: 0;
 }
 
 body .interface .interface_projet span {
@@ -75,11 +107,68 @@ body .interface .interface_projet span {
 }
 
 
-main {
-  display: block;
-  width: 100%;
+
+header {
+  position: sticky;
+  top: 0;
+  height: 15vh;
+  background: var(--noir);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: height 0.3s ease;
+  z-index: 10;
+  box-shadow: 0px 1px 20px var(--deepNoir);
+  padding: 0 2rem;
+}
+
+
+
+header .nom:hover {
+  color: var(--violet);
+}
+
+header .menu .projets .dropBtnProjet {
+  background: none;
+  border: none;
+  color: var(--blanc);
+  
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
   height: 100%;
 }
+
+header .menu .projets .dropBtnProjet:hover {
+  color: var(--violet);
+}
+
+header .menu .projets .dropContent {
+  display: none;
+  position: absolute;
+  background-color: var(--noir);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  animation: dropDown 0.5s ease-out;
+  overflow: hidden;
+  right: 2rem;
+  top: 100%;
+}
+
+header .menu .projets .dropContent a {
+  color: var(--blanc);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+header .menu .projets .dropContent a:hover {
+  color: var(--violet);
+}
+
+
 
 header {
   display: block;
@@ -92,23 +181,53 @@ header {
   z-index: 2;
   transition: height 0.3s ease;
   box-shadow: 0px 1px 20px var(--deepNoir);
-  height: 20%;
+  height: 15vh;
 }
+
 header .headerFlexContainer {
   height: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+header .nom {
+  color: var(--blanc);
+  text-decoration: none;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 header .menu {
-  display: block;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
   width: 50%;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
+
 header .menu .menuFlexContainer {
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
+
 header .menu .menuFlexContainer .projets .dropBtnProjet {
   cursor: pointer;
 }
+
 header .menu .menuFlexContainer .projets .dropContent {
   display: none;
   position: absolute;
@@ -277,239 +396,33 @@ header .menuHamburger .menuToggle input:checked ~ ul {
   transform: none;
 }
 
-/*
-main {
-    display: block;
-    position: relative;
-    top: 9vw;
-    z-index: 1;
-    .content {
-        h2 {
-            font-size: 3vw;
-        }
-        width: 100%;
-        color: var(--blanc);
-        background-color: var(--noir);
-        display: flex;
-        flex-flow: column;
-        .moi {
-            display: block;
-            overflow: hidden;
-            .degrade {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background-image: linear-gradient(rgba(31, 28, 28, 0.5), rgba(31, 28, 28, 1));
-                z-index: 0;
-            }
-            .a_propos {
-                width: 100%;
-                display: flex;
-                flex-flow: column;
-                background-image: url("img/dominic.jpg");
-                background-repeat: no-repeat;
-                background-position: center - 25%;
-                background-size: 100%;
-                padding: 3% 5%; 
-                z-index: 5;
-            }
-        }
-        .dernierProjet {
-            h3 {
-                text-transform: uppercase;
-                font-size: xx-large;
-            }
-            padding: 5% 5%;
-            .dernierProjetTitreFlexContainer {
-                display: flex;
-                justify-content: flex-end;
-                width: 100%;
-                text-align: right;
-            }
-            .dernierProjet--projet {
-                display: flex;
-                flex-flow: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-                justify-content: center;
-                /* opacity: 100%; */ /*
-            margin-bottom: 5%;
-            h3 {
-                font-size: 3vw;
-            }
 
-            .embedVid {
-                width: 80%;
-                aspect-ratio: 16/9;
-                margin: 0px;
-                iframe {
-                    width: 100%;
-                    aspect-ratio: 16/9;
-                }
-            }
-            .description {
-                width: 80%;
-                margin-bottom: 5%;
-                a {
-                    color: var(--blanc);
-                }
-                a:hover {
-                    color: var(--violet);
-                }
-            }
-        }
-    }
-}
-.portfolio {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 3% 5%;
-
-    div {
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-        justify-content: center;
-        /* opacity: 100%; */ /*
-            margin: 5% 0;
-
-            .embedVid {
-                width: 80%;
-                aspect-ratio: 16/9;
-                margin: 0px;
-                iframe {
-                    width: 100%;
-                    aspect-ratio: 16/9;
-                }
-            }
-            .description {
-                width: 80%;
-                a {
-                    color: var(--blanc);
-                }
-                a:hover {
-                    color: var(--violet);
-                }
-            }
-        }
-
-        .autoportrait {
-            width: 100%;
-            display: flex;
-            flex-flow: column;
-            .content {
-                display: grid;
-                grid-template-columns:  1fr;
-                gap: 5px;
-                margin-bottom: 0px;
-                img {
-                    width: 100%;
-                    border-radius: 20px;
-                }
-            }
-        }
-
-        .specto {
-            width: 100%;
-            display: flex;
-            flex-flow: column;
-            .content {
-                display: grid;
-                grid-template-columns:  1fr;
-                gap: 5px;
-                margin-bottom: 0px;
-                img {
-                    width: 100%;
-                    border-radius: 20px;
-                }
-            }
-        }
-
-        .sonore {
-            width: 100%;
-            display: flex;
-            // .sonore {
-            //     width: 100%;
-            //     display: flex;
-            //     .playBtn {
-            //         display: block;
-            //     }
-            //     .stopBtn {
-            //         display: none;
-            //     }
-            // }
-
-
-
-            .playBtn1, .playBtn2 {
-                width: 50vw;
-                display: block;
-                overflow: hidden;
-                img {
-                    width: 100%;
-                }
-            }
-            .stopBtn1, .stopBtn2 {
-                width: 50vw;
-                display: none;
-                img {
-                    width: 100%;
-                }
-            }
-        }
-    }
-
-
-    .contact {
-        padding: 5% 5%;
-        color: var(--blanc);
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 10;
-        .titre {
-            margin: 0px;
-            //font-size: 3vw;
-        }
-        .information {
-            width: 50%;
-            padding: 2% 2% 5% 2%;
-            color: var(--blanc);
-            a {
-                color: var(--blanc);
-            }
-            a:hover {
-                color: var(--violet);
-            }
-        }
-
-        .container {
-            display: flex;
-
-            height: 100%;
-            width: 50%;
-
-            form {
-                display: flex;
-                flex-flow: column;
-                justify-content: space-between;
-                padding: 2% 2% 5% 2%;
-            }
-        }
-    }
-
-}
-*/
 h2 {
   text-transform: uppercase;
 }
+
+.main_projet {
+  color: var(--blanc);
+  padding: 0 1% 5% 1%;
+}
+
+.main_projet h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-left: 1rem;
+}
+
+.embed_vid {
+  width: 100%;
+  height: auto;
+}
+
+.embed_vid iframe {
+  aspect-ratio: 16/9;
+}
+/*
 
 footer {
   display: block;
