@@ -435,7 +435,7 @@ h2 {
   font-size: clamp(1rem, 2vw, 1.5rem);
   line-height: 1.5;
 }
-/*
+
 
 footer {
   display: block;
@@ -463,7 +463,7 @@ footer .content a {
 footer .content a:hover {
   color: var(--violet);
 }
-
+/*
 @media screen and (max-width: 1000px) {
   body {
     font-size: 4vw;
