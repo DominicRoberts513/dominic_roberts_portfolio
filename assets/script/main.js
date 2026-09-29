@@ -34,21 +34,7 @@ if (projectHeader) {
   });
 }
 
-// Project page dropdown
-const dropdownButtonProject = document.querySelector(".dropBtnProjet");
-const dropdownContentProject = document.querySelector(".dropContent");
-if (dropdownButtonProject && dropdownContentProject) {
-  dropdownButtonProject.addEventListener("click", () => {
-    dropdownContentProject.style.display = dropdownContentProject.style.display === "block" ? "none" : "block";
-  });
 
-  // Close dropdown when clicking outside
-  window.addEventListener("click", (event) => {
-    if (!event.target.matches('.dropBtnProjet')) {
-      dropdownContentProject.style.display = "none";
-    }
-  });
-}
 
 window.addEventListener("load", () => {
     if (windowWidth > 1000) {
@@ -103,17 +89,15 @@ window.addEventListener("resize", () => {
   }
   
   // drop down menu
-  
-  // drop
-  dropdownButton.addEventListener("click", () => {
-      dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
-  });
-  
-  // close
-  window.addEventListener("click", (event) => {
-      if (!event.target.matches(".dropBtnProjet")) {
-          if (dropdownContent.style.display === "block") {
-              dropdownContent.style.display = "none";
-          }
+  if (dropdownButton && dropdownContent) {
+    dropdownButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (!event.target.closest(".dropBtnProjet")) {
+        dropdownContent.style.display = "none";
       }
-  });
+    });
+  }
